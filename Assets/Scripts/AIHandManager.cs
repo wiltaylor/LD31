@@ -42,6 +42,8 @@ public class AIHandManager : MonoBehaviour
         var cardman = card.GetComponent<CardManager>();
         cardman.Owner = 2;
 
+        card.transform.SetParent(transform, false);
+
         _cards.Add(card);
     }
 

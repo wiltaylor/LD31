@@ -5,6 +5,8 @@ using System.Collections;
 public class AITurnManager : MonoBehaviour
 {
     public static AITurnManager Instance;
+
+    public DeckManager Deck; 
     
     public void Awake()
     {
@@ -20,14 +22,13 @@ public class AITurnManager : MonoBehaviour
 
     public void RunTurn()
     {
-        //Look in hand for Resources to cast.
+        //Look in hand for Resources and minions to cast.
         CastResources();
-
-        //Look for Minions to cast.
 
         //Look for Magic to cast.
 
         //Buy more cards.
+        Deck.OnDraw();
 
         //Look for resources that have tap abilities that can be called.
 
@@ -43,7 +44,7 @@ public class AITurnManager : MonoBehaviour
         foreach (var card in from c in AIHandManager.Instance.Cards
                                  select c.GetComponent<CardManager>())
         {
-            if(card.Type != CardType.Resource)
+            if(card.Type != CardType.Resource && card.Type != CardType.Minion)
                 continue;
 
             card.OnClick();

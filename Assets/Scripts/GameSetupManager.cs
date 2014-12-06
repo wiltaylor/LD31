@@ -31,7 +31,7 @@ public class GameSetupManager : MonoBehaviour
         playerTH.transform.SetParent(PlayerGlobals.Instance.PlayerResources.transform, false);
         PlayerGlobals.Instance.PlayerResources.SortCards();
 
-        enemyTH.Owner = 1;
+        enemyTH.Owner = 2;
         enemyTH.State = CardState.InPlay;
         enemyTH.transform.SetParent(PlayerGlobals.Instance.EnemyResources.transform, false);
         PlayerGlobals.Instance.EnemyResources.SortCards();

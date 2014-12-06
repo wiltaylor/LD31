@@ -80,6 +80,18 @@ public class CardManager : MonoBehaviour
 
     public void OnClick()
     {
+        if (TargetingManager.Instance.TargetingInProgress)
+        {
+            if (_image.enabled)
+            {
+                TargetingManager.Instance.FinishTargeting(this);
+                return;
+            }
+
+            return;
+        }
+
+
         if (State == CardState.InHand)
         {
             if (Owner == 1)
@@ -167,6 +179,8 @@ public class CardManager : MonoBehaviour
             }
         }
 
+        if(State == CardState.InPlay && !Tapped)
+            gameObject.SendMessage("OnClick_InPlay");
 
     }
 
