@@ -42,24 +42,9 @@ public class CardSlotManager : MonoBehaviour
                     select c.gameObject).ToArray();
 
         var index = 0;
-        var waitcount = _currentRow*CardsBeforeScroll;
 
         foreach (var c in cards)
         {
-            if (waitcount > 0)
-            {
-                waitcount--;
-                c.SetActive(false);
-                continue;
-            }
-
-            if (index >= CardsBeforeScroll)
-            {
-                c.SetActive(false);
-                continue;
-            }
-
-            c.SetActive(true);
             var rt = c.GetComponent<RectTransform>();
             rt.position = new Vector3(FirstCardX + ((CardWidth + SpaceBetwenCards) * index) + transform.position.x, FirstCardY + transform.position.y);
             index++;
