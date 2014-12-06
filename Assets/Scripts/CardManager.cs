@@ -39,12 +39,40 @@ public class CardManager : MonoBehaviour
     public CardState State;
     private Image _image;
     private GameObject _cardObject;
+    private CardSlotManager _playerResources;
+    private CardSlotManager _playerMinions;
+    private CardSlotManager _enamyResources;
+    private CardSlotManager _enamyMinions;
+
 
     public void Start()
     {
         _image = GetComponent<Image>();
         _cardObject = GetComponentInChildren<Image>().gameObject;
-        
+
+        foreach (var i in GameObject.FindGameObjectsWithTag("CardHolder"))
+        {
+            var slotman = i.GetComponent<CardSlotManager>();
+
+            if(slotman == null)
+                continue;
+
+            switch (i.name)
+            {
+                case "Minions":
+                    if (slotman.Owner == 1)
+                        _playerMinions = slotman;
+                    else
+                        _enamyMinions = slotman;
+                    break;
+                case "Resources":
+                    if (slotman.Owner == 1)
+                        _playerResources = slotman;
+                    else
+                        _enamyResources = slotman;
+                    break;
+            }
+        }
     }
 
     public void HighlightCard()
@@ -80,7 +108,30 @@ public class CardManager : MonoBehaviour
 
     public void OnClick()
     {
-        //TODO: Click code.
+        if (State == CardState.InHand)
+        {
+            if (Type == CardType.Resource)
+            {
+                transform.SetParent(_playerResources.transform, false);
+                _playerResources.SortCards();
+                HandManager.Instance.RemoveCardFromHand(gameObject);
+
+            }
+
+            if (Type == CardType.Minion)
+            {
+                transform.SetParent(_playerMinions.transform, false);
+                _playerMinions.SortCards();
+                HandManager.Instance.RemoveCardFromHand(gameObject);
+            }
+
+            if (Type == CardType.Magic)
+            {
+                //TODO: Targeting system.
+            }
+        }
+
+
     }
 
     public void OnMouseOver()

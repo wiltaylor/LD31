@@ -8,6 +8,7 @@ PlayerSettings:
   defaultScreenOrientation: 4
   targetDevice: 2
   targetGlesGraphics: 1
+  targetIOSGraphics: -1
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
@@ -54,15 +55,17 @@ PlayerSettings:
   xboxEnableKinect: 0
   xboxEnableKinectAutoTracking: 0
   xboxEnableFitness: 0
+  visibleInBackground: 0
   macFullscreenMode: 2
+  d3d9FullscreenMode: 1
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
+  xboxOneResolution: 0
+  ps3SplashScreen: {fileID: 0}
   videoMemoryForVertexBuffers: 0
-  videoMemoryForAudio: 0
   psp2PowerMode: 0
   psp2AcquireBGM: 1
-  ps3EnableVerboseMemoryStats: 0
   m_SupportedAspectRatios:
     4:3: 1
     5:4: 1
@@ -73,6 +76,7 @@ PlayerSettings:
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
+  xboxOneDisableKinectGpuReservation: 0
   productGUID: ae20a9771089a3f40a09b12da36ea3e8
   iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 1
@@ -98,14 +102,28 @@ PlayerSettings:
   iPhoneSplashScreen: {fileID: 0}
   iPhoneHighResSplashScreen: {fileID: 0}
   iPhoneTallHighResSplashScreen: {fileID: 0}
+  iPhone47inSplashScreen: {fileID: 0}
+  iPhone55inPortraitSplashScreen: {fileID: 0}
+  iPhone55inLandscapeSplashScreen: {fileID: 0}
   iPadPortraitSplashScreen: {fileID: 0}
   iPadHighResPortraitSplashScreen: {fileID: 0}
   iPadLandscapeSplashScreen: {fileID: 0}
   iPadHighResLandscapeSplashScreen: {fileID: 0}
+  iOSLaunchScreenImage: {fileID: 0}
+  iOSLaunchScreenBackgroundColor:
+    serializedVersion: 2
+    rgba: 0
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
+  AndroidTVCompatibility: 1
+  AndroidIsGame: 1
+  androidEnableBanner: 1
+  m_AndroidBanners:
+  - width: 320
+    height: 180
+    banner: {fileID: 0}
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons: []
   m_BuildTargetBatching: []
@@ -139,32 +157,42 @@ PlayerSettings:
   ps3TrophyCommSig: 
   ps3SaveGameSlots: 1
   ps3TrialMode: 0
-  ps4NPTrophyPackPath: 
+  ps3VideoMemoryForAudio: 0
+  ps3EnableVerboseMemoryStats: 0
+  ps3UseSPUForUmbra: 0
+  ps3EnableMoveSupport: 1
+  ps3DisableDolbyEncoding: 0
   ps4NPAgeRating: 12
-  ps4NPCommunicationsID: 
-  ps4NPCommsPassphrase: 
-  ps4NPCommsSig: 
   ps4NPTitleSecret: 
+  ps4NPTrophyPackPath: 
+  ps4ParentalLevel: 1
+  ps4ContentID: ED1633-NPXX51362_00-0000000000000000
+  ps4Category: 0
+  ps4MasterVersion: 01.00
+  ps4AppVersion: 01.00
+  ps4AppType: 0
   ps4ParamSfxPath: 
+  ps4VideoOutPixelFormat: 0
+  ps4VideoOutResolution: 4
   ps4PronunciationXMLPath: 
   ps4PronunciationSIGPath: 
   ps4BackgroundImagePath: 
   ps4StartupImagePath: 
   ps4BGMPath: 
   ps4NPtitleDatPath: 
-  ps4VideoOutPixelFormat: 0
-  ps4VideoOutResolution: 4
-  ps4PackagePassword: YIErBMHRSsewQOZe9NR4HjCZ1oakTHDU
-  ps4ParentalLevel: 1
+  ps4RemotePlayKeyAssignment: -1
   ps4EnterButtonAssignment: 1
-  ps4ContentID: ED1633-NPXX51362_00-0000000000000000
-  ps4Category: 0
-  ps4MasterVersion: 01.00
-  ps4AppVersion: 01.00
   ps4ApplicationParam1: 0
   ps4ApplicationParam2: 0
   ps4ApplicationParam3: 0
   ps4ApplicationParam4: 0
+  ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
+  ps4pnSessions: 1
+  ps4pnPresence: 1
+  ps4pnFriends: 1
+  ps4pnGameCustomData: 1
+  playerPrefsSupport: 0
+  monoEnv: 
   psp2Splashimage: {fileID: 0}
   psp2NPTrophyPackPath: 
   psp2NPSupportGBMorGJP: 0
@@ -321,6 +349,8 @@ PlayerSettings:
   XboxOneAppManifestOverridePath: 
   XboxOnePackageEncryption: 0
   XboxOneDescription: 
+  XboxOneIsContentPackage: 0
+  XboxOneEnableGPUVariability: 0
   XboxOneSockets:
     Unity Internal - Mono async-IO:
       m_Name: Unity Internal - Mono async-IO
@@ -331,8 +361,11 @@ PlayerSettings:
       m_SessionRequirment: 0
       m_DeviceUsages: 
   XboxOneSplashScreen: {fileID: 0}
+  XboxOneAllowedProductIds: []
+  XboxOnePersistentLocalStorageSize: 0
   intPropertyNames:
   - Metro::ScriptingBackend
+  - WP8::ScriptingBackend
   - WebGL::ScriptingBackend
   - WebGL::audioCompressionFormat
   - WebGL::exceptionSupport
@@ -340,6 +373,7 @@ PlayerSettings:
   - iOS::Architecture
   - iOS::ScriptingBackend
   Metro::ScriptingBackend: 2
+  WP8::ScriptingBackend: 2
   WebGL::ScriptingBackend: 1
   WebGL::audioCompressionFormat: 4
   WebGL::exceptionSupport: 0
