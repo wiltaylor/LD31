@@ -36,6 +36,8 @@ public class HandManager : MonoBehaviour
 
     public void AddCard(GameObject card)
     {
+        var cardman = card.GetComponent<CardManager>();
+        cardman.Owner = 1;
         CardsInHand++;
         card.transform.SetParent(transform, false);
         _slotManager.SortCards();

@@ -150,7 +150,7 @@ public class TurnManager : MonoBehaviour
 
         if (TurnOwner == 2)
         {
-            //Run AI
+            AITurnManager.Instance.RunTurn();
         }
 
     }

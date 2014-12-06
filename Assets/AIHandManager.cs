@@ -39,6 +39,9 @@ public class AIHandManager : MonoBehaviour
 
     public void AddCard(GameObject card)
     {
+        var cardman = card.GetComponent<CardManager>();
+        cardman.Owner = 2;
+
         _cards.Add(card);
     }
 
