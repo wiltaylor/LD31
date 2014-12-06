@@ -12,6 +12,7 @@ public class HandManager : MonoBehaviour
 
     public void Awake()
     {
+        _slotManager = GetComponent<CardSlotManager>();
         if (Instance == null)
         {
             Instance = this;
@@ -20,11 +21,6 @@ public class HandManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void Start()
-    {
-        _slotManager = GetComponent<CardSlotManager>();
     }
 
     public void RemoveCardFromHand(GameObject card)

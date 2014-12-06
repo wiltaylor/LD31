@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DeckManager : MonoBehaviour
 {
@@ -9,36 +10,73 @@ public class DeckManager : MonoBehaviour
     public string[] DeckListing;
 
     private Stack<string> _deck;
+    private Image _image;
 
-    public void Start()
+    public void Awake()
     {
-        BuildDeck();
+        _image = GetComponent<Image>();
+        //BuildDeck();
     }
 
     public void OnDraw()
     {
-        if (_deck.Count == 0)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-            
-
         if (Owner == 1)
         {
-            if (!HandManager.Instance.CanDraw())
+            if (ResourceTracker.Instance.PlayerGold - PlayerGlobals.Instance.GoldCostPerDraw < 0)
                 return;
 
-            var card = _deck.Pop();
-            var cardObj = Resources.Load<GameObject>(card);
+            ResourceTracker.Instance.PlayerGold -= PlayerGlobals.Instance.GoldCostPerDraw;
+        }
 
-            HandManager.Instance.AddCard(Instantiate(cardObj));
+        if (Owner == 2)
+        {
+            if (ResourceTracker.Instance.EnemyGold - PlayerGlobals.Instance.GoldCostPerDraw < 0)
+                return;
+
+            ResourceTracker.Instance.EnemyGold -= PlayerGlobals.Instance.GoldCostPerDraw;
+        }
+        Draw(1);
+    }
+
+    public void Draw(int Qty)
+    {
+        for (var q = 0; q < Qty; q++)
+        {
+            if (_deck.Count == 0)
+            {
+                _image.enabled = false;
+                return;
+            }
+
+
+            if (Owner == 1)
+            {
+                if (!HandManager.Instance.CanDraw())
+                    return;
+
+                var card = _deck.Pop();
+                var cardObj = Resources.Load<GameObject>(card);
+
+                HandManager.Instance.AddCard(Instantiate(cardObj));
+            }
+
+            if (Owner == 2)
+            {
+                if (!AIHandManager.Instance.CanDraw())
+                    return;
+
+                var card = _deck.Pop();
+                var cardObj = Resources.Load<GameObject>(card);
+
+                AIHandManager.Instance.AddCard(Instantiate(cardObj));
+            }
         }
     }
 
     public void BuildDeck()
     {
         _deck = Shuffle(DeckListing);
+        _image.enabled = true;
     }
 
     public static Stack<T> Shuffle<T>(IList<T> list)

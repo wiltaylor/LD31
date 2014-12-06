@@ -9,6 +9,8 @@ public class PlayerGlobals : MonoBehaviour {
     public CardSlotManager EnemyResources;
     public CardSlotManager EnemyMinions;
 
+    public int GoldCostPerDraw = 10;
+
     public void Awake()
     {
         if (Instance == null)

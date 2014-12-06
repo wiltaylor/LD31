@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11424756}
   m_Layer: 5
   m_Name: Card-TownHall
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

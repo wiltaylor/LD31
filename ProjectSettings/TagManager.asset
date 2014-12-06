@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CardHolder
   - Hand
+  - Deck
+  - Card
   layers:
   - Default
   - TransparentFX

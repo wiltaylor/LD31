@@ -80,14 +80,31 @@ public class CardManager : MonoBehaviour
 
     public void OnClick()
     {
+        if (ResourceTracker.Instance.TurnOwner != 1)
+            return;
+
         if (State == CardState.InHand)
         {
+            if (ResourceTracker.Instance.PlayerFood - FoodCost < 0)
+                return;
+            if (ResourceTracker.Instance.PlayerGold - GoldCost < 0)
+                return;
+            if (ResourceTracker.Instance.PlayerWood - WoodCost < 0)
+                return;
+
             if (Type == CardType.Resource)
             {
+                if (ResourceTracker.Instance.PlayerResources < 1)
+                    return;
+
                 transform.SetParent(PlayerGlobals.Instance.PlayerResources.transform, false);
                 PlayerGlobals.Instance.PlayerResources.SortCards();
                 HandManager.Instance.RemoveCardFromHand(gameObject);
+                ResourceTracker.Instance.PlayerResources--;
 
+                ResourceTracker.Instance.PlayerFood -= FoodCost;
+                ResourceTracker.Instance.PlayerGold -= GoldCost;
+                ResourceTracker.Instance.PlayerWood -= WoodCost;
             }
 
             if (Type == CardType.Minion)
@@ -95,6 +112,10 @@ public class CardManager : MonoBehaviour
                 transform.SetParent(PlayerGlobals.Instance.PlayerMinions.transform, false);
                 PlayerGlobals.Instance.PlayerMinions.SortCards();
                 HandManager.Instance.RemoveCardFromHand(gameObject);
+
+                ResourceTracker.Instance.PlayerFood -= FoodCost;
+                ResourceTracker.Instance.PlayerGold -= GoldCost;
+                ResourceTracker.Instance.PlayerWood -= WoodCost;
             }
 
             if (Type == CardType.Magic)
@@ -111,4 +132,9 @@ public class CardManager : MonoBehaviour
         ImagePreviewManager.Instance.SetCard(CardPreviewImage, Name, CardText, Type, HP, Damage, GoldCost, WoodCost, FoodCost);
     }
 
+    public void Discard()
+    {
+        State = CardState.Discard;
+        Destroy(gameObject);
+    }
 }
