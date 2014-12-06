@@ -24,6 +24,7 @@ public class TargetingManager : MonoBehaviour
 
     public void StartTargeting(CardManager[] cards, CardManager callback)
     {
+        TargetingInProgress = true;
         _cards = cards;
         _callback = callback;
 
@@ -33,6 +34,7 @@ public class TargetingManager : MonoBehaviour
 
     public void FinishTargeting(CardManager card)
     {
+        TargetingInProgress = false;
         foreach (var c in _cards)
             c.ClearHighlight();
 
@@ -43,6 +45,7 @@ public class TargetingManager : MonoBehaviour
 
     public void CancelTargeting()
     {
+        TargetingInProgress = false;
         foreach (var c in _cards)
             c.ClearHighlight();
 

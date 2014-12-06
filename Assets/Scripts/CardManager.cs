@@ -39,6 +39,7 @@ public class CardManager : MonoBehaviour
     public CardState State;
     private Image _image;
     private GameObject _cardObject;
+    private bool _highlighted;
 
 
     public void Start()
@@ -50,11 +51,13 @@ public class CardManager : MonoBehaviour
     public void HighlightCard()
     {
         _image.enabled = true;
+        _highlighted = true;
     }
 
     public void ClearHighlight()
     {
         _image.enabled = false;
+        _highlighted = false;
     }
 
     public void Tap()
@@ -82,7 +85,7 @@ public class CardManager : MonoBehaviour
     {
         if (TargetingManager.Instance.TargetingInProgress)
         {
-            if (_image.enabled)
+            if (_highlighted)
             {
                 TargetingManager.Instance.FinishTargeting(this);
                 return;
@@ -177,6 +180,8 @@ public class CardManager : MonoBehaviour
             {
                 //TODO: Targeting system.
             }
+
+            return;
         }
 
         if(State == CardState.InPlay && !Tapped)

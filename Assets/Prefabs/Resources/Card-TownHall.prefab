@@ -11,6 +11,7 @@ GameObject:
   - 222: {fileID: 22262384}
   - 114: {fileID: 11495240}
   - 114: {fileID: 11424756}
+  - 114: {fileID: 11495748}
   m_Layer: 5
   m_Name: Card-TownHall
   m_TagString: Card
@@ -197,6 +198,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11495748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8339689c9feba5c449b6eef0a3961205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11498166
 MonoBehaviour:
   m_ObjectHideFlags: 1
