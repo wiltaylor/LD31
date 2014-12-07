@@ -48,7 +48,7 @@ public class CardManager : MonoBehaviour
 
     public void UpdateCard()
     {
-        if (SummonSickness && State == CardState.InPlay)
+        if (SummonSickness && State == CardState.InPlay && Type == CardType.Minion)
             ZZZText.text = "ZZZ";
         else
             ZZZText.text = "";

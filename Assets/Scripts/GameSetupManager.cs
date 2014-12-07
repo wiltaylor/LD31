@@ -11,6 +11,7 @@ public class GameSetupManager : MonoBehaviour
     public GameObject TownHall;
     public Canvas GameOverScreen;
     public Text GameOverText;
+    public GameObject CloseButton;
 
     public void Awake()
     {
@@ -27,6 +28,15 @@ public class GameSetupManager : MonoBehaviour
     public void Start()
     {
         NewGame();
+
+        if(Application.platform == RuntimePlatform.OSXWebPlayer || Application.platform == RuntimePlatform.WindowsWebPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+            CloseButton.SetActive(false);
+
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 
     public void ShowGameOver(bool playerWon)

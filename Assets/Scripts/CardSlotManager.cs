@@ -16,7 +16,6 @@ public class CardSlotManager : MonoBehaviour
     public int CardsBeforeScroll = 8;
 
     private Slider _slider;
-    private int _currentRow = 0;
 
     public void Start()
     {
@@ -32,7 +31,6 @@ public class CardSlotManager : MonoBehaviour
 
     public void SetRow()
     {
-        _currentRow  = (int)_slider.value;
         SortCards();
     }
 

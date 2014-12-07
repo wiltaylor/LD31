@@ -9,6 +9,7 @@ public class MagicSummaryManager : MonoBehaviour
 
     public static MagicSummaryManager Instance;
     public GameObject Panel;
+    public Scrollbar Scrollbar;
 
     public float StartY = -2177;
     public float StartX = -3f;
@@ -51,6 +52,8 @@ public class MagicSummaryManager : MonoBehaviour
 
         if(_magicList.Count <= 0)
             return;
+
+        Scrollbar.value = 0;
 
         _canvas.enabled = true;
         var row = 0;
