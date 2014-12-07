@@ -70,7 +70,10 @@ public class FireballScript : MonoBehaviour
             cardman.HP -= Damage;
 
         if (cardman.HP <= 0)
+        {
             cardman.Discard();
+            SoundManager.Instance.RemoveCard();
+        }
 
         cardman.UpdateCard();
 

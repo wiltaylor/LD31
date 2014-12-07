@@ -61,9 +61,17 @@ public class AttackManager : MonoBehaviour
             _cardman.HP -= cardman.Damage;
 
         if (cardman.HP <= 0)
+        {
             cardman.Discard();
+            SoundManager.Instance.RemoveCard();
+        }
+
         if (_cardman.HP <= 0)
+        {
             _cardman.Discard();
+            SoundManager.Instance.RemoveCard();
+        }
+            
     }
 
     private CardManager[] GetTargets()

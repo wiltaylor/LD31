@@ -26,12 +26,14 @@ public class TurnManager : MonoBehaviour
         if (PlayerGlobals.Instance.EnemyResources.transform.childCount <= 0)
         {
             GameSetupManager.Instance.ShowGameOver(true);
+            SoundManager.Instance.WinSound();
             return true;
         }
 
         if (PlayerGlobals.Instance.PlayerResources.transform.childCount <= 0)
         {
             GameSetupManager.Instance.ShowGameOver(false);
+            SoundManager.Instance.LoseSound();
             return true;
         }
 
