@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class AITurnManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class AITurnManager : MonoBehaviour
         //Look for resources that have tap abilities that can be called.
 
         //Attack with non defender minions.
+        Attack();
 
         //End Turn
         MagicSummaryManager.Instance.Show();
@@ -66,4 +68,21 @@ public class AITurnManager : MonoBehaviour
 
         }
     }
+
+    private void Attack()
+    {
+        var cards = from Transform t in PlayerGlobals.Instance.EnemyMinions.transform
+            select t.gameObject.GetComponent<CardManager>();
+
+        foreach (var c in cards)
+        {
+            if (c.Owner == 2 && !c.Tapped && !c.Defender)
+            {
+                c.OnClick();
+            }
+        }
+
+    }
+
+
 }

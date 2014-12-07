@@ -236,9 +236,10 @@ MonoBehaviour:
   Damage: 1
   Tapped: 0
   Owner: 0
-  CardPreviewImage: {fileID: 21300000, guid: b4d9e3806c6c8b744b0aad6a08b5399a, type: 3}
+  CardPreviewImage: {fileID: 21300000, guid: 2f72e48cce9e43d47ad5dd5481a35fb5, type: 3}
   CardText: 
   State: 0
+  SummonSickness: 1
 --- !u!222 &22226736
 CanvasRenderer:
   m_ObjectHideFlags: 1

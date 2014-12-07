@@ -37,9 +37,11 @@ public class CardManager : MonoBehaviour
     public Sprite CardPreviewImage;
     public string CardText;
     public CardState State;
+    public bool SummonSickness = true;
     private Image _image;
     private GameObject _cardObject;
     private bool _highlighted;
+
 
 
     public void Start()
@@ -148,6 +150,7 @@ public class CardManager : MonoBehaviour
 
             if (Type == CardType.Minion)
             {
+
                 if (Owner == 1)
                 {
                     transform.SetParent(PlayerGlobals.Instance.PlayerMinions.transform, false);
@@ -183,8 +186,16 @@ public class CardManager : MonoBehaviour
             return;
         }
 
-        if(State == CardState.InPlay && !Tapped)
-            gameObject.SendMessage("OnClick_InPlay");
+        if (State == CardState.InPlay && !Tapped)
+        {
+            if (SummonSickness && Type == CardType.Minion)
+                return;
+
+            if(Owner == 1)
+                gameObject.SendMessage("OnClick_InPlay");
+            else
+                gameObject.SendMessage("OnClick_InPlayAI");
+        }
 
     }
 
@@ -213,5 +224,11 @@ public class CardManager : MonoBehaviour
             ResourceTracker.Instance.EnemyGold -= GoldCost;
             ResourceTracker.Instance.EnemyWood -= WoodCost;
         }
+    }
+
+    public void OnStartOfTurn()
+    {
+        if (State == CardState.InPlay)
+            SummonSickness = false;
     }
 }

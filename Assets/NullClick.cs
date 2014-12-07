@@ -7,4 +7,9 @@ public class NullClick : MonoBehaviour {
     {
         
     }
+
+    public void OnClick_InPlayAI()
+    {
+        
+    }
 }

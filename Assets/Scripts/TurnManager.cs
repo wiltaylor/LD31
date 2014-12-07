@@ -81,7 +81,11 @@ public class TurnManager : MonoBehaviour
 
             if(card.Tapped)
                 card.Untap();
+
+            card.OnStartOfTurn();
         }
+
+
         
         //Upkeep
         foreach (var card in from c in GameObject.FindGameObjectsWithTag("Card")
