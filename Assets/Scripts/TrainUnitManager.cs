@@ -20,7 +20,7 @@ public class TrainUnitManager : MonoBehaviour
         if (_cardMan.Tapped)
             return;
 
-        var NewUnit = Instantiate(UnitToTrain);
+        var NewUnit = (GameObject)Instantiate(UnitToTrain);
         var cardman = NewUnit.GetComponent<CardManager>();
         cardman.Owner = 1;
 
@@ -71,7 +71,7 @@ public class TrainUnitManager : MonoBehaviour
         if (_cardMan.Tapped)
             return;
 
-        var NewUnit = Instantiate(UnitToTrain);
+        var NewUnit = (GameObject)Instantiate(UnitToTrain);
         var cardman = NewUnit.GetComponent<CardManager>();
         cardman.Owner = 2;
 

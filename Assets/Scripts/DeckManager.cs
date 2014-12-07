@@ -63,7 +63,7 @@ public class DeckManager : MonoBehaviour
                 var card = _deck.Pop();
                 var cardObj = Resources.Load<GameObject>(card);
 
-                HandManager.Instance.AddCard(Instantiate(cardObj));
+                HandManager.Instance.AddCard((GameObject)Instantiate(cardObj));
             }
 
             if (Owner == 2)
@@ -74,7 +74,7 @@ public class DeckManager : MonoBehaviour
                 var card = _deck.Pop();
                 var cardObj = Resources.Load<GameObject>(card);
 
-                AIHandManager.Instance.AddCard(Instantiate(cardObj));
+                AIHandManager.Instance.AddCard((GameObject)Instantiate(cardObj));
             }
         }
     }

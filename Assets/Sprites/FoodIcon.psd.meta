@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 53c5f360d80e37447b80b7e952a7673f
+guid: ca844364ae1a68b4fb5a74170755eec2
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: FoodIcon
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -21,20 +20,16 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
-  cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: 0
-    aniso: 1
+    filterMode: -1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
@@ -50,4 +45,3 @@ TextureImporter:
     sprites: []
   spritePackingTag: 
   userData: 
-  assetBundleName: 

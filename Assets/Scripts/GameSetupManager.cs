@@ -53,8 +53,8 @@ public class GameSetupManager : MonoBehaviour
         AIHandManager.Instance.ClearHand();
 
         //Create town halls for both players.
-        var playerTH = Instantiate(TownHall).GetComponent<CardManager>();
-        var enemyTH = Instantiate(TownHall).GetComponent<CardManager>();
+        var playerTH = ((GameObject)Instantiate(TownHall)).GetComponent<CardManager>();
+        var enemyTH = ((GameObject)Instantiate(TownHall)).GetComponent<CardManager>();
 
         playerTH.Owner = 1;
         playerTH.State = CardState.InPlay;

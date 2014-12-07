@@ -17,7 +17,6 @@ public class BuildAll : EditorWindow
     private bool _buildWeb;
     private bool _buildPackage;
     private bool _buildAndroid;
-	private bool _buildWebGL;
 
     [MenuItem("File/BuildAll/Settings", priority=3)]
     public static void OpenSettings()
@@ -39,7 +38,6 @@ public class BuildAll : EditorWindow
         _buildWeb = bool.Parse(BuildAllSettings.GetSetting("BuildWeb"));
         _buildPackage = bool.Parse(BuildAllSettings.GetSetting("BuildPackage"));
         _buildAndroid = bool.Parse(BuildAllSettings.GetSetting("BuildAndroid"));
-		_buildWebGL = bool.Parse (BuildAllSettings.GetSetting ("BuildWebGL"));
     }
 
     public void OnGUI()
@@ -62,7 +60,6 @@ public class BuildAll : EditorWindow
         _buildWindows64 = GUILayout.Toggle(_buildWindows64, "Windows 64");
         _buildLinux = GUILayout.Toggle(_buildLinux, "Linux");
         _buildWeb = GUILayout.Toggle(_buildWeb, "Web");
-		_buildWebGL = GUILayout.Toggle(_buildWebGL, "WebGL");
         _buildAndroid = GUILayout.Toggle(_buildAndroid, "Android");
         _buildPackage = GUILayout.Toggle(_buildPackage, "Package");
 
@@ -86,7 +83,7 @@ public class BuildAll : EditorWindow
 
         if (GUILayout.Button("Clean Up"))
         {
-            if(Directory.Exists(ReleaseFolder))  
+            if(Directory.Exists(ReleaseFolder))
                 Directory.Delete(ReleaseFolder, true);
 
             Directory.CreateDirectory(ReleaseFolder);
@@ -105,7 +102,6 @@ public class BuildAll : EditorWindow
         BuildAllSettings.SetSetting("BuildWindows64", _buildWindows64.ToString());
         BuildAllSettings.SetSetting("BuildLinux", _buildLinux.ToString());
         BuildAllSettings.SetSetting("BuildWeb", _buildWeb.ToString());
-		BuildAllSettings.SetSetting("BuildWebGL", _buildWebGL.ToString());
         BuildAllSettings.SetSetting("BuildPackage", _buildPackage.ToString());
         BuildAllSettings.SetSetting("BuildAndroid", _buildAndroid.ToString());
     }
@@ -142,10 +138,8 @@ public class BuildAll : EditorWindow
         var buildWindows64 = bool.Parse(BuildAllSettings.GetSetting("BuildWindows64"));
         var buildLinux = bool.Parse(BuildAllSettings.GetSetting("BuildLinux"));
         var buildWeb = bool.Parse(BuildAllSettings.GetSetting("BuildWeb"));
-		var buildWebGL = bool.Parse(BuildAllSettings.GetSetting("BuildWebGL"));
         var buildPackage = bool.Parse(BuildAllSettings.GetSetting("BuildPackage"));
         var buildAndroid = bool.Parse(BuildAllSettings.GetSetting("BuildAndroid"));
-
 
 
         //Build Players - Add more or comment out as needed
@@ -155,8 +149,6 @@ public class BuildAll : EditorWindow
             BuildPlayer(scenes, ReleaseFolder + "Windows 64", binaryName + "64.exe", BuildTarget.StandaloneWindows64, BuildOptions.None);
         if (buildWeb)
             BuildPlayer(scenes, ReleaseFolder + "Web", binaryName, BuildTarget.WebPlayer, BuildOptions.None);
-		if (buildWebGL)
-			BuildPlayer (scenes, ReleaseFolder + "WebGL", binaryName, BuildTarget.WebGL, BuildOptions.None);
         if (buildLinux)
             BuildPlayer(scenes, ReleaseFolder + "Linux", binaryName, BuildTarget.StandaloneLinuxUniversal, BuildOptions.None);
         if(buildAndroid)
@@ -180,7 +172,6 @@ public class BuildAll : EditorWindow
         var buildWindows64 = bool.Parse(BuildAllSettings.GetSetting("BuildWindows64"));
         var buildLinux = bool.Parse(BuildAllSettings.GetSetting("BuildLinux"));
         var buildWeb = bool.Parse(BuildAllSettings.GetSetting("BuildWeb"));
-		var buildWebGL = bool.Parse(BuildAllSettings.GetSetting("BuildWebGL"));
         var buildPackage = bool.Parse(BuildAllSettings.GetSetting("BuildPackage"));
         var buildAndroid = bool.Parse(BuildAllSettings.GetSetting("BuildAndroid"));
 
@@ -203,8 +194,6 @@ public class BuildAll : EditorWindow
             ZipFolder(ReleaseFolder + "Linux", publishFolder + "/" + binaryName + "-Linux-Universal.zip");
         if (buildWeb)
             CopyFolder(ReleaseFolder + "Web", publishFolder);
-		if (buildWebGL)
-			CopyFolder(ReleaseFolder + "WebGL", publishFolder + "/WebGL");
 
         EditorUtility.DisplayDialog("Publish Complete", "", "Ok");
     }

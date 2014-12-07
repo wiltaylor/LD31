@@ -44,6 +44,7 @@ public class AttackManager : MonoBehaviour
         var card = cards.First();
 
         MagicSummaryManager.Instance.AddItem(_cardman.CardPreviewImage, card.CardPreviewImage);
+
         OnFinishTargeting(card.gameObject);
     }
 
