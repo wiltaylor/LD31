@@ -33,7 +33,7 @@ public class AITurnManager : MonoBehaviour
         Deck.OnDraw();
 
         //Look for resources that have tap abilities that can be called.
-
+        TrainUnits();
         //Attack with non defender minions.
         Attack();
 
@@ -82,6 +82,18 @@ public class AITurnManager : MonoBehaviour
             }
         }
 
+    }
+
+    private void TrainUnits()
+    {
+        var cards = from Transform t in PlayerGlobals.Instance.EnemyResources.transform
+            select t.gameObject.GetComponent<CardManager>();
+
+        foreach (var c in cards)
+        {
+            if(c.Owner == 2 && !c.Tapped)
+                c.OnClick();
+        }
     }
 
 

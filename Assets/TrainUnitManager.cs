@@ -70,18 +70,18 @@ public class TrainUnitManager : MonoBehaviour
         if (_cardMan.Tapped)
             return;
 
-        if (ResourceTracker.Instance.EnemyFood - _cardMan.FoodCost < 0)
-            return;
-
-        if (ResourceTracker.Instance.EnemyGold - _cardMan.GoldCost < 0)
-            return;
-
-        if (ResourceTracker.Instance.EnemyWood - _cardMan.WoodCost < 0)
-            return;
-
         var NewUnit = Instantiate(UnitToTrain);
         var cardman = NewUnit.GetComponent<CardManager>();
         cardman.Owner = 2;
+
+        if (ResourceTracker.Instance.EnemyFood - cardman.FoodCost < 0)
+            return;
+
+        if (ResourceTracker.Instance.EnemyGold - cardman.GoldCost < 0)
+            return;
+
+        if (ResourceTracker.Instance.EnemyWood - cardman.WoodCost < 0)
+            return;
 
         if (cardman.Type == CardType.Minion)
         {
