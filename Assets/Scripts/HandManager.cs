@@ -43,5 +43,12 @@ public class HandManager : MonoBehaviour
         _slotManager.SortCards();
     }
 
+    public void ClearHand()
+    {
+        CardsInHand = 0;
+        foreach(Transform i in _slotManager.transform)
+            Destroy(i.gameObject);
+        ;
+    }
 
 }

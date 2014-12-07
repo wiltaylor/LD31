@@ -1,25 +1,54 @@
 ﻿using System.Linq;
+using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
 
 public class GameSetupManager : MonoBehaviour
 {
 
+    public static GameSetupManager Instance;
+
     public GameObject TownHall;
+    public Canvas GameOverScreen;
+    public Text GameOverText;
+
+    public void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void Start()
     {
         NewGame();
     }
 
+    public void ShowGameOver(bool playerWon)
+    {
+        GameOverScreen.enabled = true;
+        GameOverText.text = playerWon ? "Game Over: You Won!" : "Game Over: You Lost!";
+    }
+
     public void NewGame()
     {
-        Debug.Log("Started New Game");
-        //Remove all cards
-        foreach(var i in GameObject.FindGameObjectsWithTag("Card"))
-            Destroy(i);
+        //Clear up GameOverScreen
+        GameOverScreen.enabled = false;
 
-        //Clear AI Hand.
+        //Remove all cards
+        foreach (var i in GameObject.FindGameObjectsWithTag("Card"))
+        {
+            i.transform.SetParent(null);
+            Destroy(i);
+        }
+
+        //Clear hands
+        HandManager.Instance.ClearHand();
         AIHandManager.Instance.ClearHand();
 
         //Create town halls for both players.
@@ -57,6 +86,11 @@ public class GameSetupManager : MonoBehaviour
             i.Draw(HandManager.Instance.MaxHandSize);
         }
 
-
+        //sort all slots.
+        HandManager.Instance.GetComponent<CardSlotManager>().SortCards();
+        PlayerGlobals.Instance.PlayerResources.SortCards();
+        PlayerGlobals.Instance.PlayerMinions.SortCards();
+        PlayerGlobals.Instance.EnemyMinions.SortCards();
+        PlayerGlobals.Instance.EnemyResources.SortCards();
     }
 }

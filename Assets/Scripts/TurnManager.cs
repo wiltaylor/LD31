@@ -20,8 +20,35 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    public bool CheckForVictory()
+    {
+        if (PlayerGlobals.Instance.EnemyResources.transform.childCount <= 0)
+        {
+            GameSetupManager.Instance.ShowGameOver(true);
+            return true;
+        }
+
+        if (PlayerGlobals.Instance.PlayerResources.transform.childCount <= 0)
+        {
+            GameSetupManager.Instance.ShowGameOver(false);
+            return true;
+        }
+
+        return false;
+    }
+
     public void NextTurn()
     {
+        //sort all slots.
+        HandManager.Instance.GetComponent<CardSlotManager>().SortCards();
+        PlayerGlobals.Instance.PlayerResources.SortCards();
+        PlayerGlobals.Instance.PlayerMinions.SortCards();
+        PlayerGlobals.Instance.EnemyMinions.SortCards();
+        PlayerGlobals.Instance.EnemyResources.SortCards();
+
+        if (CheckForVictory())
+            return;
+
         TurnOwner = TurnOwner == 1 ? 2 : 1;
 
         if (TurnOwner == 1)

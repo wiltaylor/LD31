@@ -42,8 +42,6 @@ public class CardManager : MonoBehaviour
     private GameObject _cardObject;
     private bool _highlighted;
 
-
-
     public void Start()
     {
         _image = GetComponent<Image>();
