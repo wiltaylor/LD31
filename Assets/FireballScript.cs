@@ -38,14 +38,6 @@ public class FireballScript : MonoBehaviour
     {
         var cardman = obj.GetComponent<CardManager>();
 
-        cardman.HP -= Damage;
-
-        if(cardman.HP <= 0)
-            cardman.Discard();
-
-        _cardman.PayCost();
-        _cardman.Discard();
-
         if (_cardman.Owner == 1)
         {
             transform.SetParent(null);
@@ -55,7 +47,35 @@ public class FireballScript : MonoBehaviour
         else
         {
             AIHandManager.Instance.RemoveCard(gameObject);
-        }
+            MagicSummaryManager.Instance.AddItem(_cardman.CardPreviewImage, cardman.CardPreviewImage);
+   }
+
+        cardman.HP -= Damage;
+
+        if (cardman.HP <= 0)
+            cardman.Discard();
+
+        _cardman.PayCost();
+        _cardman.Discard();
+    }
+
+    public void OnCast_AI()
+    {
+        var allCards = (from o in GameObject.FindGameObjectsWithTag("Card")
+                        select o.GetComponent<CardManager>()).ToArray();
+
+        var allTargets = from m in allCards
+                         where m.State == CardState.InPlay
+                         where m.Type == CardType.Minion || m.Type == CardType.Resource
+                         where m.Owner == OpponentID
+                         select m;
+
+        var cards = allTargets.ToArray();
+
+        if (cards.Length <= 0)
+            return;
+
+        OnFinishTargeting(cards.First().gameObject);
     }
 
 }

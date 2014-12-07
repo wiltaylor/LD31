@@ -26,6 +26,7 @@ public class AITurnManager : MonoBehaviour
         CastResources();
 
         //Look for Magic to cast.
+        CastMagic();
 
         //Buy more cards.
         Deck.OnDraw();
@@ -35,6 +36,7 @@ public class AITurnManager : MonoBehaviour
         //Attack with non defender minions.
 
         //End Turn
+        MagicSummaryManager.Instance.Show();
         TurnManager.Instance.NextTurn();
 
     }
@@ -45,6 +47,19 @@ public class AITurnManager : MonoBehaviour
                                  select c.GetComponent<CardManager>())
         {
             if(card.Type != CardType.Resource && card.Type != CardType.Minion)
+                continue;
+
+            card.OnClick();
+
+        }
+    }
+
+    private void CastMagic()
+    {
+        foreach (var card in from c in AIHandManager.Instance.Cards
+                             select c.GetComponent<CardManager>())
+        {
+            if (card.Type != CardType.Magic)
                 continue;
 
             card.OnClick();

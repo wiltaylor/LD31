@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -9,14 +10,9 @@ public class MagicSummaryManager : MonoBehaviour
     public static MagicSummaryManager Instance;
     public GameObject Panel;
 
-    public float MagicStartX = -218;
-    public float MagicStartY = 130;
-    public float ArrowStartX = -27;
-    public float ArrowStartY = 122;
-    public float TargetStartX = 168;
-    public float TargetStartY = 130;
-    public float YShift = -128;
-
+    public float StartY = -2177;
+    public float StartX = -3f;
+    public float YSpace = 130f;
     public Sprite ArrowImage;
 
     private Canvas _canvas;
@@ -35,6 +31,8 @@ public class MagicSummaryManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Accept();
     }
 
     public void Accept()
@@ -51,30 +49,41 @@ public class MagicSummaryManager : MonoBehaviour
     public void Show()
     {
 
+        if(_magicList.Count <= 0)
+            return;
+
         _canvas.enabled = true;
         var row = 0;
 
-        foreach (var item in _magicList)
+        foreach (var item in Enumerable.Reverse(_magicList))
         {
+            var container = new GameObject("Container").AddComponent<HorizontalLayoutGroup>();
+            container.childAlignment = TextAnchor.MiddleLeft;
+            var rect = container.GetComponent<RectTransform>();
+            rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100f);
+            rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 500f);
+            container.spacing = 60;
+
+
             var cardImage = new GameObject("Card").AddComponent<Image>();
             cardImage.sprite = item.Card;
-            cardImage.transform.SetParent(Panel.transform, false);
-            cardImage.transform.position = new Vector3(MagicStartX, MagicStartY + (YShift * row));
-
-            var targetImage = new GameObject("Target").AddComponent<Image>();
-            targetImage.sprite = item.Target;
-            targetImage.transform.SetParent(Panel.transform, false);
-            targetImage.transform.position = new Vector3(TargetStartX, TargetStartY + (YShift * row));
-            
+            cardImage.SetNativeSize();
+            cardImage.transform.SetParent(container.transform, false);
 
             var targetArrow = new GameObject("Arrow").AddComponent<Image>();
             targetArrow.sprite = ArrowImage;
-            targetArrow.transform.SetParent(Panel.transform, false);
-            targetArrow.transform.position = new Vector3(ArrowStartX, ArrowStartY + (YShift * row));
+            targetArrow.SetNativeSize();
+            targetArrow.transform.SetParent(container.transform, false);
 
+            var targetImage = new GameObject("Target").AddComponent<Image>();
+            targetImage.sprite = item.Target;
+            targetImage.SetNativeSize();
+            targetImage.transform.SetParent(container.transform, false);
             
+            container.transform.SetParent(Panel.transform);
+            rect.localPosition = new Vector3(StartX, StartY + (row * YSpace));
 
-
+            row++;
         }
     }
 
