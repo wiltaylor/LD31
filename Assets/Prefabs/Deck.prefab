@@ -55,7 +55,7 @@ MonoBehaviour:
   DeckListing:
   - Card-Farm
   - Card-Pesants
-  - Card-TownHall
+  - Card-Tower
   - Card-Farm
   - Card-CitySquare
   - Card-CitySquare
@@ -63,6 +63,36 @@ MonoBehaviour:
   - Card-Farm
   - Card-Fireball
   - Card-Farm
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-FootSoldier
+  - Card-FootSoldier
+  - Card-FootSoldier
+  - Card-FootSoldier
+  - Card-FootSoldier
+  - Card-Tower
+  - Card-Tower
+  - Card-Tower
+  - Card-Wall
+  - Card-Wall
+  - Card-Wall
+  - Card-Barracks
+  - Card-Barracks
+  - Card-Barracks
+  - Card-BadArseSnowman
+  - Card-MageTower
+  - Card-MageTower
+  - Card-MageTower
+  - Card-MageTower
+  - Card-MageTower
 --- !u!114 &11469166
 MonoBehaviour:
   m_ObjectHideFlags: 1

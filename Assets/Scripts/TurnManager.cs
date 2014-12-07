@@ -7,6 +7,7 @@ public class TurnManager : MonoBehaviour
 
     public static TurnManager Instance;
     public int TurnOwner = 1;
+    public AITurnTimeOut AITurnStarter;
 
     public void Awake()
     {
@@ -181,7 +182,8 @@ public class TurnManager : MonoBehaviour
 
         if (TurnOwner == 2)
         {
-            AITurnManager.Instance.RunTurn();
+            AITurnStarter.StartCountDown();
+            //AITurnManager.Instance.RunTurn();
         }
 
     }

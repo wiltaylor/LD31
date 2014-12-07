@@ -87,7 +87,7 @@ public class AttackManager : MonoBehaviour
                                    select r).ToArray();
 
         if (AllDefenderResources.Length > 0)
-            return AllDefenderMinions;
+            return AllDefenderResources;
 
         var AllResources = (from r in AllCards
                            where r.State == CardState.InPlay
