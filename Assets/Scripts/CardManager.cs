@@ -128,9 +128,7 @@ public class CardManager : MonoBehaviour
                     HandManager.Instance.RemoveCardFromHand(gameObject);
                     ResourceTracker.Instance.PlayerResources--;
 
-                    ResourceTracker.Instance.PlayerFood -= FoodCost;
-                    ResourceTracker.Instance.PlayerGold -= GoldCost;
-                    ResourceTracker.Instance.PlayerWood -= WoodCost;
+                    PayCost();
                     State = CardState.InPlay;
                 }
                 else
@@ -143,9 +141,7 @@ public class CardManager : MonoBehaviour
                     AIHandManager.Instance.RemoveCard(gameObject);
                     ResourceTracker.Instance.EnemyResources--;
 
-                    ResourceTracker.Instance.EnemyFood -= FoodCost;
-                    ResourceTracker.Instance.EnemyGold -= GoldCost;
-                    ResourceTracker.Instance.EnemyWood -= WoodCost;
+                    PayCost();
                     State = CardState.InPlay;
                 }
             }
@@ -158,9 +154,7 @@ public class CardManager : MonoBehaviour
                     PlayerGlobals.Instance.PlayerMinions.SortCards();
                     HandManager.Instance.RemoveCardFromHand(gameObject);
 
-                    ResourceTracker.Instance.PlayerFood -= FoodCost;
-                    ResourceTracker.Instance.PlayerGold -= GoldCost;
-                    ResourceTracker.Instance.PlayerWood -= WoodCost;
+                    PayCost();
                     State = CardState.InPlay;
                 }
                 else
@@ -169,16 +163,21 @@ public class CardManager : MonoBehaviour
                     PlayerGlobals.Instance.EnemyMinions.SortCards();
                     AIHandManager.Instance.RemoveCard(gameObject);
 
-                    ResourceTracker.Instance.EnemyFood -= FoodCost;
-                    ResourceTracker.Instance.EnemyGold -= GoldCost;
-                    ResourceTracker.Instance.EnemyWood -= WoodCost;
+                    PayCost();
                     State = CardState.InPlay;
                 }
             }
 
             if (Type == CardType.Magic)
             {
-                //TODO: Targeting system.
+                if (Owner == 1)
+                {
+                    gameObject.SendMessage("OnCast");
+                }
+                else
+                {
+                    gameObject.SendMessage("OnCast_AI");
+                }
             }
 
             return;
@@ -198,5 +197,21 @@ public class CardManager : MonoBehaviour
     {
         State = CardState.Discard;
         Destroy(gameObject);
+    }
+
+    public void PayCost()
+    {
+        if (Owner == 1)
+        {
+            ResourceTracker.Instance.PlayerFood -= FoodCost;
+            ResourceTracker.Instance.PlayerGold -= GoldCost;
+            ResourceTracker.Instance.PlayerWood -= WoodCost;
+        }
+        else
+        {
+            ResourceTracker.Instance.EnemyFood -= FoodCost;
+            ResourceTracker.Instance.EnemyGold -= GoldCost;
+            ResourceTracker.Instance.EnemyWood -= WoodCost;
+        }
     }
 }
