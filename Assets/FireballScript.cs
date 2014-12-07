@@ -8,6 +8,9 @@ public class FireballScript : MonoBehaviour
     private CardManager _cardman;
     private int OpponentID = 0;
     public int Damage = 5;
+    public bool Destroy = false;
+    public CardType Type = CardType.Minion;
+    public bool LimitType = false;
 
     public void Start()
     {
@@ -20,13 +23,24 @@ public class FireballScript : MonoBehaviour
         var allCards = (from o in GameObject.FindGameObjectsWithTag("Card")
                         select o.GetComponent<CardManager>()).ToArray();
 
-        var allTargets = from m in allCards
-                         where m.State == CardState.InPlay
-                         where m.Type == CardType.Minion || m.Type == CardType.Resource
-                         where m.Owner == OpponentID
-                         select m;
+        CardManager[] cards;
+        if (LimitType)
+        {
+            cards = (from m in allCards
+                where m.State == CardState.InPlay
+                where m.Type == Type
+                where m.Owner == OpponentID
+                select m).ToArray();
 
-        var cards = allTargets.ToArray();
+        }
+        else
+        {
+            cards = (from m in allCards
+                where m.State == CardState.InPlay
+                where m.Type == CardType.Minion || m.Type == CardType.Resource
+                where m.Owner == OpponentID
+                select m).ToArray();
+        }
 
         if (cards.Length <= 0)
             return;
@@ -50,7 +64,10 @@ public class FireballScript : MonoBehaviour
             MagicSummaryManager.Instance.AddItem(_cardman.CardPreviewImage, cardman.CardPreviewImage);
    }
 
-        cardman.HP -= Damage;
+        if (Destroy)
+            cardman.HP = 0;
+        else
+            cardman.HP -= Damage;
 
         if (cardman.HP <= 0)
             cardman.Discard();
@@ -64,13 +81,25 @@ public class FireballScript : MonoBehaviour
         var allCards = (from o in GameObject.FindGameObjectsWithTag("Card")
                         select o.GetComponent<CardManager>()).ToArray();
 
-        var allTargets = from m in allCards
-                         where m.State == CardState.InPlay
-                         where m.Type == CardType.Minion || m.Type == CardType.Resource
-                         where m.Owner == OpponentID
-                         select m;
+        CardManager[] cards;
+        if (LimitType)
+        {
+            cards = (from m in allCards
+                     where m.State == CardState.InPlay
+                     where m.Type == Type
+                     where m.Owner == OpponentID
+                     select m).ToArray();
 
-        var cards = allTargets.ToArray();
+        }
+        else
+        {
+            cards = (from m in allCards
+                     where m.State == CardState.InPlay
+                     where m.Type == CardType.Minion || m.Type == CardType.Resource
+                     where m.Owner == OpponentID
+                     select m).ToArray();
+        }
+
 
         if (cards.Length <= 0)
             return;

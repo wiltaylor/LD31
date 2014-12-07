@@ -93,6 +93,26 @@ MonoBehaviour:
   - Card-MageTower
   - Card-MageTower
   - Card-MageTower
+  - Card-MageTower
+  - Card-MageTower
+  - Card-ShieldWall
+  - Card-ShieldWall
+  - Card-ShieldWall
+  - Card-ShieldWall
+  - Card-ShieldWall
+  - Card-Catapult
+  - Card-Catapult
+  - Card-Catapult
+  - Card-Catapult
+  - Card-Smite
+  - Card-Smite
+  - Card-Smite
+  - Card-Smite
+  - Card-Archer
+  - Card-Archer
+  - Card-Archer
+  - Card-Archer
+  - Card-Archer
 --- !u!114 &11469166
 MonoBehaviour:
   m_ObjectHideFlags: 1

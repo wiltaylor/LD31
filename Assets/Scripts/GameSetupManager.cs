@@ -31,6 +31,7 @@ public class GameSetupManager : MonoBehaviour
 
     public void ShowGameOver(bool playerWon)
     {
+        MagicSummaryManager.Instance.Accept();
         GameOverScreen.enabled = true;
         GameOverText.text = playerWon ? "Game Over: You Won!" : "Game Over: You Lost!";
     }

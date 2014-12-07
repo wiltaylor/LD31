@@ -9,6 +9,9 @@ public class AttackManager : MonoBehaviour
     private CardManager _cardman;
     private int OpponentID = 0;
 
+    public bool SeiegeWeapon = false;
+    public bool Archers = false;
+
     public void Start()
     {
         _cardman = GetComponent<CardManager>();
@@ -46,7 +49,9 @@ public class AttackManager : MonoBehaviour
         _cardman.Tap();
 
         cardman.HP -= _cardman.Damage;
-        _cardman.HP -= cardman.Damage;
+
+        if(!Archers)
+            _cardman.HP -= cardman.Damage;
 
         if (cardman.HP <= 0)
             cardman.Discard();
@@ -59,35 +64,45 @@ public class AttackManager : MonoBehaviour
         var AllCards = (from o in GameObject.FindGameObjectsWithTag("Card")
                         select o.GetComponent<CardManager>()).ToArray();
 
-        var AllDefenderMinions = (from m in AllCards
-                                 where m.State == CardState.InPlay
-                                 where m.Type == CardType.Minion
-                                 where m.Owner == OpponentID
-                                 where m.Defender
-                                 select m).ToArray();
-        
-        if (AllDefenderMinions.Length > 0)
-            return AllDefenderMinions;
+        if (!SeiegeWeapon)
+        {
 
+            if (!Archers)
+            {
+                var AllDefenderMinions = (from m in AllCards
+                    where m.State == CardState.InPlay
+                    where m.Type == CardType.Minion
+                    where m.Owner == OpponentID
+                    where m.Defender
+                    select m).ToArray();
 
-        var AllMinions = (from m in AllCards
-                         where m.State == CardState.InPlay
-                         where m.Owner == OpponentID
-                         where m.Type == CardType.Minion
-                         select m).ToArray();
+                if (AllDefenderMinions.Length > 0)
+                    return AllDefenderMinions;
+            }
 
-        if (AllMinions.Length > 0)
-            return AllMinions;
-        
-        var AllDefenderResources = (from r in AllCards
-                                   where r.State == CardState.InPlay
-                                   where r.Owner == OpponentID
-                                   where r.Defender
-                                   where r.Type == CardType.Resource
-                                   select r).ToArray();
+            var AllMinions = (from m in AllCards
+                where m.State == CardState.InPlay
+                where m.Owner == OpponentID
+                where m.Type == CardType.Minion
+                select m).ToArray();
 
-        if (AllDefenderResources.Length > 0)
-            return AllDefenderResources;
+            if (AllMinions.Length > 0)
+                return AllMinions;
+
+            if (!Archers)
+            {
+                var AllDefenderResources = (from r in AllCards
+                    where r.State == CardState.InPlay
+                    where r.Owner == OpponentID
+                    where r.Defender
+                    where r.Type == CardType.Resource
+                    select r).ToArray();
+
+                if (AllDefenderResources.Length > 0)
+                    return AllDefenderResources;
+            }
+
+        }
 
         var AllResources = (from r in AllCards
                            where r.State == CardState.InPlay

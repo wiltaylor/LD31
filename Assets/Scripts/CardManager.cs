@@ -9,7 +9,8 @@ public enum CardType
 {
     Resource,
     Minion,
-    Magic
+    Magic,
+    ResourceAndMinion
 }
 
 public enum CardState
@@ -204,6 +205,7 @@ public class CardManager : MonoBehaviour
 
     public void Discard()
     {
+        transform.SetParent(null);
         State = CardState.Discard;
         Destroy(gameObject);
     }
