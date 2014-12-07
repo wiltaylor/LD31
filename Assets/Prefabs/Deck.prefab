@@ -85,34 +85,55 @@ MonoBehaviour:
   - Card-Wall
   - Card-Wall
   - Card-Barracks
-  - Card-Barracks
+  - Card-Archer
   - Card-Barracks
   - Card-BadArseSnowman
   - Card-MageTower
   - Card-MageTower
-  - Card-MageTower
-  - Card-MageTower
-  - Card-MageTower
-  - Card-MageTower
+  - Card-Farm
+  - Card-Farm
+  - Card-Farm
+  - Card-Farm
   - Card-MageTower
   - Card-ShieldWall
-  - Card-ShieldWall
+  - Card-Farm
   - Card-ShieldWall
   - Card-ShieldWall
   - Card-ShieldWall
   - Card-Catapult
   - Card-Catapult
+  - Card-Farm
   - Card-Catapult
-  - Card-Catapult
   - Card-Smite
   - Card-Smite
   - Card-Smite
-  - Card-Smite
   - Card-Archer
   - Card-Archer
-  - Card-Archer
-  - Card-Archer
-  - Card-Archer
+  - Card-Farm
+  - Card-Farm
+  - Card-Farm
+  - Card-Farm
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-LumberMill
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  - Card-Goldmine
+  CanDraw: 1
 --- !u!114 &11469166
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   Name: Tower
   Type: 0
   GoldPerTurn: 0
-  FoodPerTurn: 0
+  FoodPerTurn: -5
   WoodPerTurn: 0
   GoldCost: 100
   FoodCost: 10
@@ -216,9 +216,11 @@ MonoBehaviour:
   Tapped: 0
   Owner: 0
   CardPreviewImage: {fileID: 21300000, guid: 5aaf995fca9aff446b2b006a428a9d7a, type: 3}
-  CardText: Produces 10 Gold, 10 Wood and 10 Food each turn.
+  CardText: 'Defender: This resource must be destroyed before opponent can attack
+    other resources.'
   State: 0
   SummonSickness: 1
+  TargetPriority: 75
 --- !u!114 &11486420
 MonoBehaviour:
   m_ObjectHideFlags: 1

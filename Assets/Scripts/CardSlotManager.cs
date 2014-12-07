@@ -39,7 +39,8 @@ public class CardSlotManager : MonoBehaviour
     public void SortCards()
     {
         var cards = (from c in GetComponentsInChildren<CardManager>()
-                    select c.gameObject).ToArray();
+            orderby c.TargetPriority
+            select c.gameObject).ToArray();
 
         var index = 0;
 

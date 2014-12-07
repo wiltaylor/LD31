@@ -56,6 +56,7 @@ public class TrainUnitManager : MonoBehaviour
             }
 
             HandManager.Instance.AddCard(NewUnit);
+            _cardMan.Tap();
             return;
         }
         cardman.PayCost();

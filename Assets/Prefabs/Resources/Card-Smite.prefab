@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
-  Destroy: 1
+  DestroyTarget: 1
   Type: 1
   LimitType: 1
 --- !u!114 &11432120
@@ -107,7 +107,7 @@ MonoBehaviour:
   GoldPerTurn: 0
   FoodPerTurn: 0
   WoodPerTurn: 0
-  GoldCost: 500
+  GoldCost: 200
   FoodCost: 0
   WoodCost: 0
   HP: 1
@@ -116,9 +116,10 @@ MonoBehaviour:
   Tapped: 0
   Owner: 0
   CardPreviewImage: {fileID: 21300000, guid: c912e427bb2361642834cc7ce1eef824, type: 3}
-  CardText: Does 5 damage to target creature or resource.
+  CardText: Destroy target Minion.
   State: 0
   SummonSickness: 1
+  TargetPriority: 100
 --- !u!114 &11432934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0

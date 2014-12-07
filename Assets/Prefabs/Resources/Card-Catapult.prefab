@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SeiegeWeapon: 1
+  Archers: 1
 --- !u!114 &11466068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -173,21 +174,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catapult
   Type: 1
-  GoldPerTurn: -20
-  FoodPerTurn: -1
-  WoodPerTurn: -10
-  GoldCost: 200
+  GoldPerTurn: 0
+  FoodPerTurn: -10
+  WoodPerTurn: 0
+  GoldCost: 1000
   FoodCost: 20
-  WoodCost: 100
+  WoodCost: 500
   HP: 1
   Defender: 0
   Damage: 20
   Tapped: 0
   Owner: 0
   CardPreviewImage: {fileID: 21300000, guid: 133f21661987e3048bf035c52bdcf2ed, type: 3}
-  CardText: 
+  CardText: Catapult can attack buildings even if oppononet has Minions.
   State: 0
   SummonSickness: 1
+  TargetPriority: 2
 --- !u!114 &11495322
 MonoBehaviour:
   m_ObjectHideFlags: 1

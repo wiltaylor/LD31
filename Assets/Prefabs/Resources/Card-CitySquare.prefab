@@ -155,6 +155,7 @@ MonoBehaviour:
   CardText: 'Tap: Train Pesant'
   State: 0
   SummonSickness: 1
+  TargetPriority: 10
 --- !u!114 &11445948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0

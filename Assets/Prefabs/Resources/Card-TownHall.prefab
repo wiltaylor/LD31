@@ -89,13 +89,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Town Hall
   Type: 0
-  GoldPerTurn: 10
+  GoldPerTurn: 100
   FoodPerTurn: 10
   WoodPerTurn: 10
-  GoldCost: 1000
-  FoodCost: 1000
-  WoodCost: 1000
-  HP: 20
+  GoldCost: 0
+  FoodCost: 5
+  WoodCost: 200
+  HP: 50
   Defender: 0
   Damage: 0
   Tapped: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   CardText: Produces 10 Gold, 10 Wood and 10 Food each turn.
   State: 0
   SummonSickness: 1
+  TargetPriority: 70
 --- !u!114 &11470914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0

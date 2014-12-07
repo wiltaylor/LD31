@@ -8,7 +8,7 @@ public class FireballScript : MonoBehaviour
     private CardManager _cardman;
     private int OpponentID = 0;
     public int Damage = 5;
-    public bool Destroy = false;
+    public bool DestroyTarget = false;
     public CardType Type = CardType.Minion;
     public bool LimitType = false;
 
@@ -64,13 +64,15 @@ public class FireballScript : MonoBehaviour
             MagicSummaryManager.Instance.AddItem(_cardman.CardPreviewImage, cardman.CardPreviewImage);
    }
 
-        if (Destroy)
+        if (DestroyTarget)
             cardman.HP = 0;
         else
             cardman.HP -= Damage;
 
         if (cardman.HP <= 0)
             cardman.Discard();
+
+        cardman.UpdateCard();
 
         _cardman.PayCost();
         _cardman.Discard();
@@ -105,6 +107,11 @@ public class FireballScript : MonoBehaviour
             return;
 
         OnFinishTargeting(cards.First().gameObject);
+    }
+
+    public void OnCancelTargeting()
+    {
+        return;
     }
 
 }

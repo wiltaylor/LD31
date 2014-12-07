@@ -8,6 +8,7 @@ public class DeckManager : MonoBehaviour
 
     public int Owner = 0;
     public string[] DeckListing;
+    public bool CanDraw = true;
 
     private Stack<string> _deck;
     private Image _image;
@@ -20,6 +21,11 @@ public class DeckManager : MonoBehaviour
 
     public void OnDraw()
     {
+        if (!CanDraw)
+            return;
+
+        CanDraw = false;
+
         if (Owner == 1)
         {
             if (ResourceTracker.Instance.PlayerGold - PlayerGlobals.Instance.GoldCostPerDraw < 0)

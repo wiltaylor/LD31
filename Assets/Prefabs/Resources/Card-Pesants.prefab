@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515b5e15db8bc98439ae35e75e25f771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SeiegeWeapon: 0
+  Archers: 0
 --- !u!114 &11488376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,9 +239,10 @@ MonoBehaviour:
   Tapped: 0
   Owner: 0
   CardPreviewImage: {fileID: 21300000, guid: 2f72e48cce9e43d47ad5dd5481a35fb5, type: 3}
-  CardText: 
+  CardText: Cannon Fodder
   State: 0
   SummonSickness: 1
+  TargetPriority: 60
 --- !u!222 &22226736
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -89,21 +89,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Bad Arse Snowman
   Type: 1
-  GoldPerTurn: -20
+  GoldPerTurn: 0
   FoodPerTurn: -20
-  WoodPerTurn: -5
+  WoodPerTurn: 0
   GoldCost: 1000
   FoodCost: 500
   WoodCost: 100
-  HP: 100
+  HP: 20
   Defender: 0
   Damage: 10
   Tapped: 0
   Owner: 0
   CardPreviewImage: {fileID: 21300000, guid: aa5d4665cd39c1245a63581a5960d611, type: 3}
-  CardText: 
+  CardText: Bad arse snowman is bad arse!
   State: 0
   SummonSickness: 1
+  TargetPriority: 5
 --- !u!114 &11437458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -240,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515b5e15db8bc98439ae35e75e25f771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SeiegeWeapon: 0
+  Archers: 0
 --- !u!222 &22228534
 CanvasRenderer:
   m_ObjectHideFlags: 1

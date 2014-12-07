@@ -40,12 +40,24 @@ public class TurnManager : MonoBehaviour
 
     public void NextTurn()
     {
+        if (TargetingManager.Instance.TargetingInProgress)
+        {
+            TargetingManager.Instance.CancelTargeting();
+        }
+
         //sort all slots.
         HandManager.Instance.GetComponent<CardSlotManager>().SortCards();
         PlayerGlobals.Instance.PlayerResources.SortCards();
         PlayerGlobals.Instance.PlayerMinions.SortCards();
         PlayerGlobals.Instance.EnemyMinions.SortCards();
         PlayerGlobals.Instance.EnemyResources.SortCards();
+
+        //Reset draw limit.
+        foreach (var deck in from d in GameObject.FindGameObjectsWithTag("Deck")
+            select d.GetComponent<DeckManager>())
+        {
+            deck.CanDraw = true;
+        }
 
         if (CheckForVictory())
             return;
@@ -183,7 +195,6 @@ public class TurnManager : MonoBehaviour
         if (TurnOwner == 2)
         {
             AITurnStarter.StartCountDown();
-            //AITurnManager.Instance.RunTurn();
         }
 
     }

@@ -92,9 +92,9 @@ MonoBehaviour:
   GoldPerTurn: 0
   FoodPerTurn: 0
   WoodPerTurn: 100
-  GoldCost: 0
+  GoldCost: 200
   FoodCost: 0
-  WoodCost: 100
+  WoodCost: 0
   HP: 10
   Defender: 0
   Damage: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   CardText: Produces 100 Wood per turn.
   State: 0
   SummonSickness: 1
+  TargetPriority: 100
 --- !u!114 &11454654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0

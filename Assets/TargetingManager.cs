@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TargetingManager : MonoBehaviour
 {
 
     public static TargetingManager Instance;
     public bool TargetingInProgress { get; private set; }
+    public GameObject CancelSelectionButton;
 
     private CardManager[] _cards;
     private CardManager _callback;
@@ -24,16 +26,18 @@ public class TargetingManager : MonoBehaviour
 
     public void StartTargeting(CardManager[] cards, CardManager callback)
     {
-        TargetingInProgress = true;
+        
         _cards = cards;
         _callback = callback;
-
+        CancelSelectionButton.SetActive(true);
+        TargetingInProgress = true;
         foreach(var c in cards)
             c.HighlightCard();
     }
 
     public void FinishTargeting(CardManager card)
     {
+        CancelSelectionButton.SetActive(false);
         TargetingInProgress = false;
         foreach (var c in _cards)
             c.ClearHighlight();
@@ -45,6 +49,7 @@ public class TargetingManager : MonoBehaviour
 
     public void CancelTargeting()
     {
+        CancelSelectionButton.SetActive(false);
         TargetingInProgress = false;
         foreach (var c in _cards)
             c.ClearHighlight();

@@ -18,6 +18,11 @@ public class AttackManager : MonoBehaviour
         OpponentID = _cardman.Owner == 1 ? 2 : 1;
     }
 
+    public void OnCancelTargeting()
+    {
+        return;
+    }
+
     public void OnClick_InPlay()
     {
 
@@ -49,6 +54,7 @@ public class AttackManager : MonoBehaviour
         _cardman.Tap();
 
         cardman.HP -= _cardman.Damage;
+        cardman.UpdateCard();
 
         if(!Archers)
             _cardman.HP -= cardman.Damage;
@@ -74,6 +80,7 @@ public class AttackManager : MonoBehaviour
                     where m.Type == CardType.Minion
                     where m.Owner == OpponentID
                     where m.Defender
+                    orderby m.TargetPriority
                     select m).ToArray();
 
                 if (AllDefenderMinions.Length > 0)
@@ -84,6 +91,7 @@ public class AttackManager : MonoBehaviour
                 where m.State == CardState.InPlay
                 where m.Owner == OpponentID
                 where m.Type == CardType.Minion
+                orderby m.TargetPriority
                 select m).ToArray();
 
             if (AllMinions.Length > 0)
@@ -96,6 +104,7 @@ public class AttackManager : MonoBehaviour
                     where r.Owner == OpponentID
                     where r.Defender
                     where r.Type == CardType.Resource
+                    orderby r.TargetPriority
                     select r).ToArray();
 
                 if (AllDefenderResources.Length > 0)
@@ -108,6 +117,7 @@ public class AttackManager : MonoBehaviour
                            where r.State == CardState.InPlay
                            where r.Owner == OpponentID
                            where r.Type == CardType.Resource
+                           orderby r.TargetPriority
                            select r).ToArray();
 
         return AllResources.Length > 0 ? AllResources : null;

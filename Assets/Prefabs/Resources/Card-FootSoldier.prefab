@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Foot Soldier
   Type: 1
-  GoldPerTurn: -5
+  GoldPerTurn: 0
   FoodPerTurn: -5
   WoodPerTurn: 0
   GoldCost: 100
@@ -83,6 +83,7 @@ MonoBehaviour:
   CardText: 
   State: 0
   SummonSickness: 1
+  TargetPriority: 30
 --- !u!114 &11439160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -210,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515b5e15db8bc98439ae35e75e25f771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SeiegeWeapon: 0
+  Archers: 0
 --- !u!114 &11499226
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -67,15 +67,15 @@ public class GameSetupManager : MonoBehaviour
         PlayerGlobals.Instance.EnemyResources.SortCards();
 
         //Setting initial Resources.
-        ResourceTracker.Instance.PlayerFood = 1000;
-        ResourceTracker.Instance.PlayerGold = 1000;
-        ResourceTracker.Instance.PlayerWood = 1000;
+        ResourceTracker.Instance.PlayerFood = 500;
+        ResourceTracker.Instance.PlayerGold = 500;
+        ResourceTracker.Instance.PlayerWood = 500;
         ResourceTracker.Instance.PlayerResources = 1;
         ResourceTracker.Instance.PlayerResourcesPerTurn = 1;
 
-        ResourceTracker.Instance.EnemyFood = 1000;
-        ResourceTracker.Instance.EnemyGold = 1000;
-        ResourceTracker.Instance.EnemyWood = 1000;
+        ResourceTracker.Instance.EnemyFood = 500;
+        ResourceTracker.Instance.EnemyGold = 500;
+        ResourceTracker.Instance.EnemyWood = 500;
         ResourceTracker.Instance.EnemyResources = 1;
         ResourceTracker.Instance.EnemyResourcesPerTurn = 1;
 

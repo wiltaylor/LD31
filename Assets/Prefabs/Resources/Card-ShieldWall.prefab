@@ -193,21 +193,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Shield Wall
   Type: 1
-  GoldPerTurn: -5
-  FoodPerTurn: -5
+  GoldPerTurn: 0
+  FoodPerTurn: -10
   WoodPerTurn: 0
   GoldCost: 100
   FoodCost: 20
   WoodCost: 0
-  HP: 100
+  HP: 20
   Defender: 1
   Damage: 0
   Tapped: 0
   Owner: 0
   CardPreviewImage: {fileID: 21300000, guid: 4b30f79834855a5448debcb273ac4a6b, type: 3}
-  CardText: 
+  CardText: 'Defender: Must be attacked before other minions.'
   State: 0
   SummonSickness: 1
+  TargetPriority: 100
 --- !u!114 &11447968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117241383, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SeiegeWeapon: 0
+  Archers: 0
 --- !u!222 &22229414
 CanvasRenderer:
   m_ObjectHideFlags: 1

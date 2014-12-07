@@ -42,11 +42,33 @@ public class CardManager : MonoBehaviour
     private Image _image;
     private GameObject _cardObject;
     private bool _highlighted;
+    public int TargetPriority = 100;
+    public Text ZZZText;
+    public Text CombatText;
+
+    public void UpdateCard()
+    {
+        if (SummonSickness && State == CardState.InPlay)
+            ZZZText.text = "ZZZ";
+        else
+            ZZZText.text = "";
+
+        if (Type == CardType.Magic)
+        {
+            CombatText.text = "";
+        }
+        else
+        {
+            CombatText.text = Damage + "/" + HP;
+        }
+    }
+
 
     public void Start()
     {
         _image = GetComponent<Image>();
         _cardObject = GetComponentInChildren<Image>().gameObject;
+        UpdateCard();
     }
 
     public void HighlightCard()
@@ -69,6 +91,7 @@ public class CardManager : MonoBehaviour
         Tapped = true;
 
         _cardObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+        UpdateCard();
 
     }
 
@@ -80,6 +103,7 @@ public class CardManager : MonoBehaviour
         Tapped = false;
 
         _cardObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        UpdateCard();
     }
 
     public void OnClick()
@@ -131,6 +155,7 @@ public class CardManager : MonoBehaviour
 
                     PayCost();
                     State = CardState.InPlay;
+                    UpdateCard();
                 }
                 else
                 {
@@ -144,6 +169,7 @@ public class CardManager : MonoBehaviour
 
                     PayCost();
                     State = CardState.InPlay;
+                    UpdateCard();
                 }
             }
 
@@ -158,6 +184,7 @@ public class CardManager : MonoBehaviour
 
                     PayCost();
                     State = CardState.InPlay;
+                    UpdateCard();
                 }
                 else
                 {
@@ -167,6 +194,7 @@ public class CardManager : MonoBehaviour
 
                     PayCost();
                     State = CardState.InPlay;
+                    UpdateCard();
                 }
             }
 
@@ -200,7 +228,7 @@ public class CardManager : MonoBehaviour
 
     public void OnMouseOver()
     {
-        ImagePreviewManager.Instance.SetCard(CardPreviewImage, Name, CardText, Type, HP, Damage, GoldCost, WoodCost, FoodCost);
+        ImagePreviewManager.Instance.SetCard(CardPreviewImage, Name, CardText, Type, HP, Damage, GoldCost, WoodCost, FoodCost, GoldPerTurn, WoodPerTurn, FoodPerTurn);
     }
 
     public void Discard()
@@ -230,5 +258,7 @@ public class CardManager : MonoBehaviour
     {
         if (State == CardState.InPlay)
             SummonSickness = false;
+
+        UpdateCard();
     }
 }

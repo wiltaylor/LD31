@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design.Serialization;
+﻿using System;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -19,6 +20,14 @@ public class ImagePreviewManager : MonoBehaviour {
     public Image FoodIcon;
     public Image WoodIcon;
     public Image GoldIcon;
+    public Text UpkeepFood;
+    public Text UpkeepGold;
+    public Text UpkeepWood;
+    public Image UpkeepFoodIcon;
+    public Image UpkeepGoldIcon;
+    public Image UpkeepWoodIcon;
+    public Text UpkeepText;
+
 
     private Image _image;
 
@@ -54,10 +63,17 @@ public class ImagePreviewManager : MonoBehaviour {
         CombatText.text = "";
         TitleText.text = "";
         CardText.text = "";
+        UpkeepFood.text = "";
+        UpkeepGold.text = "";
+        UpkeepWood.text = "";
+        UpkeepFoodIcon.enabled = false;
+        UpkeepGoldIcon.enabled = false;
+        UpkeepWoodIcon.enabled = false;
+        UpkeepText.enabled = false;
 
     }
 
-    public void SetCard(Sprite image, string title, string text, CardType type, int hp, int damage, int gold, int wood, int food)
+    public void SetCard(Sprite image, string title, string text, CardType type, int hp, int damage, int gold, int wood, int food, int upkeepGold, int upkeepWood, int upkeepFood)
     {
         _image.sprite = CardTemplate;
         FoodIcon.enabled = true;
@@ -71,6 +87,27 @@ public class ImagePreviewManager : MonoBehaviour {
         FoodCostText.text = food.ToString();
         WoodCostText.text = wood.ToString();
         GoldCostText.text = gold.ToString();
+
+        if (type != CardType.Magic)
+        {
+            UpkeepFood.text = upkeepFood.ToString();
+            UpkeepGold.text = upkeepGold.ToString();
+            UpkeepWood.text = upkeepWood.ToString();
+            UpkeepFoodIcon.enabled = true;
+            UpkeepGoldIcon.enabled = true;
+            UpkeepWoodIcon.enabled = true;
+            UpkeepText.enabled = true;
+        }
+        else
+        {
+            UpkeepFood.text = "";
+            UpkeepGold.text = "";
+            UpkeepWood.text = "";
+            UpkeepFoodIcon.enabled = false;
+            UpkeepGoldIcon.enabled = false;
+            UpkeepWoodIcon.enabled = false;
+            UpkeepText.enabled = false;
+        }
 
         switch (type)
         {

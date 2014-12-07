@@ -106,15 +106,17 @@ MonoBehaviour:
   GoldCost: 100
   FoodCost: 10
   WoodCost: 800
-  HP: 40
+  HP: 60
   Defender: 1
   Damage: 0
   Tapped: 0
   Owner: 0
   CardPreviewImage: {fileID: 21300000, guid: 0eacecab354f0f04d942308e10bbf148, type: 3}
-  CardText: 
+  CardText: 'Defender: This resource must be destroyed before opponent can attack
+    other resources.'
   State: 0
   SummonSickness: 1
+  TargetPriority: 80
 --- !u!114 &11438820
 MonoBehaviour:
   m_ObjectHideFlags: 1
